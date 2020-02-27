@@ -1,0 +1,10 @@
+.buttons {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 4px;
+
+    > * {
+        margin: 4px;
+    }
+}
