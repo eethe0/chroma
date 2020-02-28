@@ -37,6 +37,10 @@ body {
   }
 }
 
+.material-icons-outlined {
+  font-size: 1.2em;
+}
+
 .button {
   appearance: none;
   position: relative;
@@ -54,7 +58,7 @@ body {
   transition: all 100ms;
   
   > *:not(:last-child) { 
-    margin-right: 8px;
+    margin-right: 0.5em;
   }
 
   &::before {
@@ -108,7 +112,8 @@ body {
   }
 
   &.small {
-    padding: 0.25em 0.5em;
+    font-weight: normal;
+    padding: 0.25em;
   }
 }
 
