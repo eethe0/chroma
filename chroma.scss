@@ -1,10 +1,12 @@
-@import url("https://fonts.googleapis.com/css?family=Rubik:400,500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lexend+Deca&family=Manrope:wght@400;500;700&display=swap");
 
-$font: "Rubik", sans-serif;
-$primary: #0092e7;
-$bg: #eee;
+$font: "Manrope", sans-serif;
+$alt-font: "Lexend Deca", sans-serif;
+$primary: #03a9f4;
+$bg: #fff;
 $light: #fafafa;
 $dark: #222;
+$border-radius: 3px;
 
 * {
   box-sizing: border-box;
@@ -14,19 +16,16 @@ $dark: #222;
   font-weight: inherit;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  padding: 0;
 }
 
 html,
 body {
   margin: 0;
   height: 100%;
-}
-
-body {
-  background-color: $bg;
   font-family: $font;
   font-size: 15px;
-  color: $dark;
 }
 
 @function legible($bg) {
@@ -37,138 +36,273 @@ body {
   }
 }
 
+@mixin elevation($z) {
+  box-shadow: 0 $z 2 * $z rgba(#000, 0.1);
+}
+
+body {
+  background-color: $bg;
+  color: legible($bg);
+}
+
 .material-icons-outlined {
   font-size: 1.2em;
 }
 
-.button {
+h1 {
+  font-family: $alt-font;
+  font-size: 2rem;
+  margin: 1em 0;
+}
+
+h2 {
+  font-family: $alt-font;
+  font-size: 1.5rem;
+  margin: 1em 0;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button {
   appearance: none;
+  touch-action: pan-x pan-y;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
   position: relative;
+  border: none;
+  cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 0;
-  padding: 0.5em;
-  font-weight: 500;
-  background-color: $primary;
-  color: legible($primary);
-  box-shadow: 0 0 0 0 rgba($primary, 0.5), 0 2px 4px rgba(#000, 0.2);
-  border-radius: 3px;
+  background-color: transparent;
+  color: legible($bg);
+  font-family: $alt-font;
+  margin: 0;
+  padding: 8px;
+  border-radius: $border-radius;
+  box-shadow: 0 0 0 6px transparent;
+  transform: scale(1);
 
-  transition: all 100ms;
-  
-  > *:not(:last-child) { 
-    margin-right: 0.5em;
+  transition: all 100ms, box-shadow 200ms, transform 100ms;
+
+  &.primary {
+    color: $primary;
   }
 
-  &::before {
-    content: "";
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: inherit;
-    transition: all 300ms ease-out;
+  > * {
+    margin-right: 4px;
+
+    &:last-child {
+      margin-right: 0;
+    }
   }
 
   &:focus {
     outline: none;
+    background-color: rgba(legible($bg), 0.05);
+
+    &.primary {
+      background-color: rgba($primary, 0.05);
+    }
   }
 
-  &:hover,
-  &:focus {
-    box-shadow: 0 0 0 2px rgba($primary, 0.5), 0 2px 4px rgba(#000, 0.2);
+  &:hover {
+    animation: none;
+    background-color: rgba(legible($bg), 0.08);
 
-    &::before {
-      box-shadow: 0 0 0 8px rgba($primary, 0);
+    &.primary {
+      animation: none;
+      background-color: rgba($primary, 0.08);
     }
   }
 
   &:active {
-    box-shadow: 0 0 0 0 rgba($primary, 0), 0 2px 4px rgba(#000, 0.2);
+    transform: scale(0.9);
+    box-shadow: 0 0 0 0 rgba(legible($bg), 0.75);
+    transition: all 0ms, box-shadow 0ms, transform 50ms linear;
 
-    &::before {
-      box-shadow: 0 0 0 0px rgba($primary, 1);
-      transition: all 0ms;
+    &.primary {
+      box-shadow: 0 0 0 0 rgba($primary, 0.75);
     }
   }
 
   &:disabled {
-    box-shadow: 0 0 0 0 rgba($primary, 0), 0 2px 4px rgba(#000, 0.2);
-    background-color: #eaeaea;
-    color: #aaa;
-    
-    &::before {
-      box-shadow: none;
-      transition: all 0ms;
-    }
+    background-color: transparent;
+    color: mix($bg, legible($bg), 50%);
+    cursor: default;
+  }
+
+  &.small {
+    padding: 4px;
   }
 
   &.caps {
     text-transform: uppercase;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.05em;
   }
 
-  &.small {
-    font-weight: normal;
-    padding: 0.25em;
-  }
-}
+  &.outline {
+    border: 1px solid rgba(legible($bg), 0.1);
 
-.button-outline {
-  @extend .button;
+    &.primary {
+      border-color: rgba($primary, 0.1);
+    }
 
-  border: 1px solid #aaa;
-  box-shadow: none;
-  background-color: transparent;
-  color: $primary;
+    &:focus {
+      border-color: rgba(legible($bg), 0.5);
 
-  &:hover,
-  &:focus {
-    box-shadow: none;
-    border: 1px solid rgba($primary, 0.5);
-    background-color: rgba($primary, 0.1);
-  }
+      &.primary {
+        border-color: rgba($primary, 0.5);
+      }
+    }
 
-  &:active {
-    background-color: rgba($primary, 0.2);
-  }
+    &:hover {
+      border-color: rgba(legible($bg), 0.8);
 
-  &:disabled {
-    box-shadow: none;
-    border: 1px solid #bbb;
-    background-color: transparent;
-    color: #bbb;
-  }
-}
+      &.primary {
+        border-color: rgba($primary, 0.5);
+      }
+    }
 
-.button-flat {
-  @extend .button;
-
-  box-shadow: none;
-  background-color: transparent;
-  color: $primary;
-
-  &:hover,
-  &:focus {
-    box-shadow: none;
-    background-color: rgba($primary, 0.2);
+    &:disabled {
+      border-color: rgba(legible($bg), 0.05);
+      color: mix($bg, legible($bg), 50%);
+    }
   }
 
-  &:active {
-    background-color: rgba($primary, 0.3);
-  }
+  &.solid {
+    background-color: $bg;
+    color: legible($bg);
+    box-shadow: 0 2px 4px rgba(#000, 0.1), 0 0 0 6px rgba(legible($bg), 0);
 
-  &:disabled {
-    box-shadow: none;
-    background-color: transparent;
-    color: #aaa;
+    &.primary {
+      background-color: $primary;
+      color: legible($primary);
+    }
+
+    &:focus {
+      background-color: mix($bg, legible($bg), 97%);
+
+      &.primary {
+        background-color: mix($primary, legible(legible($primary)), 80%);
+      }
+    }
+
+    &:hover {
+      background-color: mix($bg, legible($bg), 95%);
+
+      &.primary {
+        background-color: mix($primary, legible(legible($primary)), 70%);
+      }
+    }
+
+    &:active {
+      box-shadow: 0 2px 4px rgba(#000, 0.1), 0 0 0 0 rgba(legible($bg), 0.75);
+
+      &.primary {
+        box-shadow: 0 2px 4px rgba(#000, 0.1), 0 0 0 0 rgba($primary, 0.75);
+      }
+    }
+
+    &:disabled {
+      $bgcolor: mix($bg, legible($bg), 90%);
+      background-color: $bgcolor;
+      color: mix($bgcolor, legible($bgcolor), 50%);
+    }
   }
 }
 
 .card {
-  box-shadow: 0 2px 10px rgba(#000,0.2);
-  border: 1px solid #ccc;
+  background-color: $bg;
+  @include elevation(2px);
+  overflow: hidden;
+  border-radius: $border-radius;
+
+  .card-content {
+    padding: 16px 24px;
+    display: flex;
+    flex-direction: column;
+
+    > * {
+      margin: 8px 0;
+    }
+  }
+
+  .card-actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 0;
+
+    > * {
+      margin-right: 8px;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+
+  &.primary {
+    background-color: $primary;
+    color: legible($primary);
+  }
+}
+
+.glass {
+  backdrop-filter: contrast(1.5) blur(16px);
+  background-color: rgba($bg, 0.5);
+}
+
+.field {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-top: 8px;
+
+  input {
+    appearance: none;
+    width: 100%;
+    //background-color: mix($bg, legible($bg), 92%);
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid mix($bg, legible($bg), 80%);
+    padding: 8px 0;
+    //border-radius: $border-radius;
+    //box-shadow: 0 0 0 0 rgba($primary, 0);
+    transition: all 300ms;
+
+    & + label {
+      position: absolute;
+      cursor: text;
+      //top: 8px;
+      left: 0;
+      padding: 8px 0;
+      transition: all 200ms;
+      transform-origin: top left;
+      color: mix($bg, legible($bg), 50%);
+    }
+
+    &:focus {
+      outline: none;
+      //box-shadow: 0 0 0 2px $primary;
+      border-color: $primary;
+    }
+
+    &:focus {
+      & + label {
+        color: $primary;
+      }
+    }
+
+    &:focus,
+    &.has-content {
+      & + label {
+        transform: scale(0.8) translateY(-1.75em);
+      }
+    }
+  }
 }

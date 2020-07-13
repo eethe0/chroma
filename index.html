@@ -11,26 +11,147 @@
 </head>
 
 <body>
-    <div class="buttons">
-        <button class="button">Button</button>
-        <button class="button" disabled>Disabled</button>
-        <button class="button-outline">Outline</button>
-        <button class="button-outline" disabled>Disabled</button>
-        <button class="button-flat">Flat</button>
-        <button class="button-flat" disabled>Disabled</button>
-        <button class="button-outline caps">All caps</button>
-        <button class="button-outline small">Small</button>
-        <button class="button">
-            <i class="material-icons-outlined">visibility</i>
-            <span>Icon</span>
-        </button>
-        <button class="button-outline">
-            <i class="material-icons-outlined">done</i>
-        </button>
+    <div class="wrap">
+        <h1 class="chroma">chroma</h1>
+        <h2>Buttons</h2>
+        <div class="showcase buttons">
+            <button>Button</button>
+            <button disabled>Disabled</button>
+            <button class="outline">Outline</button>
+            <button class="outline" disabled>Disabled</button>
+            <button class="solid">Solid</button>
+            <button class="solid" disabled>Disabled</button>
+            <button class="caps">All caps</button>
+            <button class="outline small">Small</button>
+            <button class="solid">
+                <i class="material-icons-outlined">visibility</i>
+                <span>Icon</span>
+            </button>
+            <button>
+                <i class="material-icons-outlined">done</i>
+            </button>
+        </div>
+        <h2>Colored Elements</h2>
+        <div class="showcase colored">
+            <button class="primary">Button</button>
+            <button class="outline primary">Outline</button>
+            <button class="solid primary">Solid</button>
+            <div class="card primary">
+                <div class="card-content">
+                    <h2>Colored Card</h2>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores quidem sunt voluptas beatae
+                        ipsa deleniti porro! Quas iure quae, esse reiciendis cum ex sequi debitis consequatur
+                        tempora, est perspiciatis illum.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <h2>Input Fields</h2>
+        <div class="showcase fields">
+            <div class="field">
+                <input type="text" id="name-field">
+                <label for="name-field">Name</label>
+            </div>
+            <div class="field">
+                <input type="email" id="email-field">
+                <label for="email-field">Email</label>
+            </div>
+            <div class="field">
+                <input type="password" id="password-field">
+                <label for="password-field">Password</label>
+            </div>
+            <div class="field">
+                <input type="number" id="age-field" min="0">
+                <label for="age-field">Age</label>
+            </div>
+            <div class="field">
+                <input type="date" id="date-field">
+                <label for="date-field">Date</label>
+            </div>
+        </div>
+        <h2>Cards</h2>
+        <div class="showcase cards">
+            <div class="card">
+                <div class="card-content">
+                    <h2>Warning</h2>
+                    <p>
+                        You have unsaved work. Do you want to save before leaving ?
+                    </p>
+                    <div class="card-actions">
+                        <button class="primary">Cancel</button>
+                        <button class="primary">Quit</button>
+                        <button class="outline primary">Save & quit</button>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-content">
+                    <h2>Create project</h2>
+                    <div class="field">
+                        <input type="text" id="project-field" value="chroma">
+                        <label for="project-field">Project name</label>
+                    </div>
+                    <div class="field">
+                        <input type="text" id="description-field" value="CSS style library">
+                        <label for="description-field">Description</label>
+                    </div>
+                    <div class="card-actions">
+                        <button class="primary">Cancel</button>
+                        <button class="outline primary">Create</button>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://picsum.photos/400/200" />
+                <div class="card-content">
+                    <h2>Picture Card</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores quidem sunt voluptas beatae
+                        ipsa deleniti porro! Quas iure quae, esse reiciendis cum ex sequi debitis consequatur
+                        tempora, est perspiciatis illum.</p>
+                </div>
+            </div>
+        </div>
+        <h2>Glass</h2>
+        <div class="showcase glass-cards">
+            <div class="card glass">
+                <div class="card-content">
+                    <h2>Glass Card</h2>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores quidem sunt voluptas beatae
+                        ipsa deleniti porro! Quas iure quae, esse reiciendis cum ex sequi debitis consequatur
+                        tempora, est perspiciatis illum.
+                    </p>
+                    <div class="card-actions">
+                        <button class="outline">OK</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h2>Elevation</h2>
+        <div class="showcase elevation">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <br>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <br>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <br>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
     </div>
-    <div class="card">
-        <p>Hello</p>
-    </div>
+    <script src="main.ts"></script>
 </body>
 
 </html>

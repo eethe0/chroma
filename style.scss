@@ -1,10 +1,129 @@
+@import "chroma.scss";
+
+.wrap {
+    max-width: 1048px;
+    padding: 0 24px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.chroma {
+    text-align: center;
+    font-size: 64px;
+    color: #03a9f4;
+
+    @keyframes color-rotation {
+        0% {
+            color: #03a9f4;
+        }
+        50% {
+            color: #e91e63;
+        }
+        100% {
+            color: #03a9f4;
+        }
+    }
+    animation: color-rotation 5s infinite linear;
+}
+
+.showcase {
+    padding: 24px;
+    background: mix($bg, invert($bg), 95%);
+    border-radius: $border-radius;
+
+    @media screen and (max-width: 640px) {
+        border-radius: 0;
+        margin: 0 -24px;
+    }
+}
+
 .buttons {
     display: flex;
+    justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    padding: 4px;
 
     > * {
         margin: 4px;
+    }
+}
+
+.cards {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+
+    > * {
+        margin-bottom: 16px;
+        width: 400px;
+        max-width: 100%;
+    }
+}
+
+.glass-cards {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+    background-image: url("https://picsum.photos/1000/500");
+    background-size: cover;
+    background-position: center;
+
+    > * {
+        width: 400px;
+        max-width: 100%;
+        margin-bottom: 16px;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}
+
+.fields {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+
+    > * {
+        margin: 8px;
+    }
+}
+
+.elevation {
+    text-align: center;
+
+    > div {
+        display: inline-block;
+        margin: 16px;
+        background-color: $bg;
+        width: 64px;
+        height: 64px;
+        border-radius: $border-radius;
+
+        @for $i from 0 to 16 {
+            &:nth-of-type(#{$i + 1}) {
+                @include elevation($i + 0px);
+            }
+        }
+    }
+}
+
+.colored {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+
+    > * {
+        margin-bottom: 16px;
+        max-width: 100%;
+
+        &.card {
+            width: 400px;
+        }
     }
 }
