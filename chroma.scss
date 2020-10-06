@@ -40,6 +40,12 @@ body {
   box-shadow: 0 $z 2 * $z rgba(#000, 0.1);
 }
 
+@for $i from 0 to 16 {
+  .elevation-#{$i + 1} {
+    @include elevation($i + 0px);
+  }
+}
+
 body {
   background-color: $bg;
   color: legible($bg);
